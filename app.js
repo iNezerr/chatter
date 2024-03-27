@@ -21,13 +21,24 @@ $('#loginForm').submit(function (event) {
 
 // Listen for login response
 socket.on('loginResponse', function (response) {
-  if (response.success) {
-    // Redirect to chat page or perform other actions upon successful login
-    console.log('Login successful!')
+  const { success } = response;
+
+  if (success) {
+    // Hide the login form
+    $('#loginForm').hide();
+
+    // Show a message indicating that the user is logged in
+    // $('#loggedInMessage').text(`Logged in as ${username}`).show();
+
+    // Or alternatively, show the logout button
+    $('#loggedInSection').show();
+    
+    // Update the logged-in username
+    $('#loggedInUsername').text($('#username').val());
   } else {
-    alert('Invalid username or password. Please try again.')
+    alert('Login failed. Please try again.'); // You may want to display a more user-friendly message
   }
-})
+});
 
 // Add this code to the end of app.js
 
@@ -72,6 +83,7 @@ $('#logoutBtn').click(function() {
   // Hide chat section and show login form
   $('#chatSection').addClass('d-none');
   $('#loginForm').removeClass('d-none');
+  window.location.reload();
 });
 
 // Listen for logout response
