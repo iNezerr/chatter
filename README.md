@@ -14,9 +14,8 @@ CSS (MDBBootstrap)
 JavaScript (jQuery, Socket.IO) (implemented)
 ### Getting Started:
 
-Clone the repository: git clone https://github.com/your-username/chatter.git
+Clone the repository: git clone https://github.com/iNezerr/chatter.git
 Install dependencies (if any): [List any dependencies here and instructions for installation]
 ### Run the development server:
 ### Live Demo:
 
-If you've deployed the app to a platform like Heroku, you can include a link here to a live demo.
