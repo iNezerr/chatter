@@ -1,5 +1,5 @@
 // Initialize Socket.IO
-const socket = io("https://eben-chatter.netlify.app/")
+const socket = io("https://eben-chatter.netlify.app")
 
 // Handle login form submission
 $('#loginForm').submit(function (event) {
