@@ -1,5 +1,5 @@
 // Initialize Socket.IO
-const socket = io('http://localhost:3000')
+const socket = io("https://eben-chatter.netlify.app/")
 
 // Handle login form submission
 $('#loginForm').submit(function (event) {
@@ -32,7 +32,7 @@ socket.on('loginResponse', function (response) {
 
     // Or alternatively, show the logout button
     $('#loggedInSection').show();
-    
+
     // Update the logged-in username
     $('#loggedInUsername').text($('#username').val());
   } else {
