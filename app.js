@@ -1,5 +1,5 @@
 // Initialize Socket.IO
-const socket = io("https://eben-chatter.netlify.app")
+const socket = io('https://eben-chatter.netlify.app/')
 
 // Handle login form submission
 $('#loginForm').submit(function (event) {
@@ -21,24 +21,24 @@ $('#loginForm').submit(function (event) {
 
 // Listen for login response
 socket.on('loginResponse', function (response) {
-  const { success } = response;
+  const { success } = response
 
   if (success) {
     // Hide the login form
-    $('#loginForm').hide();
+    $('#loginForm').hide()
 
     // Show a message indicating that the user is logged in
     // $('#loggedInMessage').text(`Logged in as ${username}`).show();
 
     // Or alternatively, show the logout button
-    $('#loggedInSection').show();
+    $('#loggedInSection').show()
 
     // Update the logged-in username
-    $('#loggedInUsername').text($('#username').val());
+    $('#loggedInUsername').text($('#username').val())
   } else {
-    alert('Login failed. Please try again.'); // You may want to display a more user-friendly message
+    alert('Login failed. Please try again.') // You may want to display a more user-friendly message
   }
-});
+})
 
 // Add this code to the end of app.js
 
@@ -58,12 +58,13 @@ $('#messageForm').submit(function (event) {
 
 // Update the receiveMessage event handler in app.js
 
-socket.on('receiveMessage', function(data) {
-  const { username, message, timestamp } = data;
-  const formattedTimestamp = new Date(timestamp).toLocaleTimeString();
-  $('#messageContainer').append(`<p><strong>${username}</strong> (${formattedTimestamp}): ${message}</p>`);
-});
-
+socket.on('receiveMessage', function (data) {
+  const { username, message, timestamp } = data
+  const formattedTimestamp = new Date(timestamp).toLocaleTimeString()
+  $('#messageContainer').append(
+    `<p><strong>${username}</strong> (${formattedTimestamp}): ${message}</p>`
+  )
+})
 
 // Add this code to the end of app.js
 
@@ -77,16 +78,16 @@ socket.on('updateUserList', function (users) {
 // Add this code to the end of app.js
 
 // Handle logout button click
-$('#logoutBtn').click(function() {
+$('#logoutBtn').click(function () {
   // Emit logout event
-  socket.emit('logout');
+  socket.emit('logout')
   // Hide chat section and show login form
-  $('#chatSection').addClass('d-none');
-  $('#loginForm').removeClass('d-none');
-  window.location.reload();
-});
+  $('#chatSection').addClass('d-none')
+  $('#loginForm').removeClass('d-none')
+  window.location.reload()
+})
 
 // Listen for logout response
-socket.on('logoutResponse', function() {
-  console.log('Logout successful!');
-});
+socket.on('logoutResponse', function () {
+  console.log('Logout successful!')
+})
