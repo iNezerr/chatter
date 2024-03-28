@@ -9,13 +9,6 @@ const io = require('socket.io')(http, {
     methods: ["GET", "POST"]
   }
 });
-// const cors = require('cors') // Import the cors middleware
-
-// app.use(cors());
-
-// Configure Socket.IO to use the same CORS middleware as Express
-// io.origins('*:*'); // Allow all origins
-
 // Start the server
 const PORT = process.env.PORT || 3000
 http.listen(PORT, function () {
